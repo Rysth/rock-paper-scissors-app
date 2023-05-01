@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap");
+
+:root {
+	--CL-primary-blue: #6369d115;
+
+	--CL-primary-orange: #ff7e4b;
+	--CL-primary-green: #36c929;
+	--CL-primary-blue-accented: #4b57ff;
+
+	--CL-neutral-white: #ffffff;
+	--CL-neutral-black: #000000;
+
+	--CL-neutral-transparent-black: #00000062;
+
+	--FF-primary-poppins: "Poppins", sans-serif;
+}
+
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+html,
+body {
+	height: 100%;
+}
+
+body {
+	display: grid;
+	place-items: center;
+	font-family: var(--FF-primary-poppins);
+	padding: 1em 0;
+}
+
+img,
+picture,
+svg,
+video {
+	display: block;
+	max-width: 100%;
+}
+
+input,
+button {
+	width: 100%;
+	font-family: var(--FF-primary-poppins);
+}
+
+/* Calculator Styles */
+
+.calculator {
+	width: min(95%, 40rem);
+	box-shadow: 0 0 5px var(--CL-neutral-transparent-black);
+	background-color: var(--CL-primary-blue);
+	padding: 2em;
+	border-radius: 1em;
+}
+
+.calculator__header {
+	margin: 0 0 2em 0;
+}
+
+.calculator__result {
+	pointer-events: none;
+}
+
+.calculator__result,
+.calculator__button {
+	padding: 1em;
+	border-radius: 0.5em;
+	border: none;
+	box-shadow: 0 1px 5px var(--CL-neutral-transparent-black);
+	font-size: 1.8rem;
+}
+
+.calculator__content {
+	display: grid;
+	gap: 1em;
+}
+
+.calculator__grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 1em;
+}
+
+.calculator__button {
+	cursor: pointer;
+	background-color: var(--CL-neutral-white);
+}
+
+.calculator__button--equal {
+	grid-column: 4 / 5;
+	grid-row: 1 / 4;
+}
+
+/* General Styles */
+.bg-orange {
+	background-color: var(--CL-primary-orange);
+	color: var(--CL-neutral-white);
+}
+
+.bg-blue {
+	background-color: var(--CL-primary-blue-accented);
+	color: var(--CL-neutral-white);
+}
+
+.bg-green {
+	background-color: var(--CL-primary-green);
+	color: white;
+}
+
+@media (min-width: 768px) {
+	.calculator__button:hover {
+		background-color: var(--CL-neutral-black);
+		color: var(--CL-neutral-white);
+	}
+}
