@@ -1,33 +1,67 @@
-const calculatorResult = document.querySelector(
-	"#calculator__result"
+const stopwatchNumber = document.querySelector(
+	".stopwatch__number"
 );
 
-const calculatorButtons = document.querySelectorAll(
-	".calculator__button"
+const stopwatchButtons = document.querySelectorAll(
+	".stopwatch__button"
 );
 
-calculatorButtons.forEach((button) => {
-	button.addEventListener("click", (event) => {
-		const innerText = button.innerText;
-
-		if (innerText === "C") {
-			clearResult();
-		} else if (innerText === "=") {
-			calculateResult();
-		} else {
-			appendValue(innerText);
+stopwatchButtons.forEach((button) => {
+	button.addEventListener("click", () => {
+		switch (button.id) {
+			case "start":
+				startTimer();
+				break;
+			case "stop":
+				stopTimer();
+				break;
+			case "reset":
+				resetTimer();
+				break;
 		}
 	});
 });
 
-const clearResult = () => {
-	calculatorResult.value = "";
+let hours = 00;
+let minutes = 00;
+let seconds = 00;
+let timer = null;
+
+const startTimer = () => {
+	if (timer !== null) {
+		console.log(timer);
+		clearInterval(timer);
+	}
+	timer = setInterval(runningTimer, 1000);
+};
+const runningTimer = () => {
+	seconds++;
+	if (seconds == 60) {
+		seconds = 0;
+		minutes++;
+		if (minutes == 60) {
+			minutes = 0;
+			hours++;
+		}
+	}
+
+	let hoursFormatted = hours < 10 ? `0${hours}` : hours;
+	let minutesFormatted =
+		minutes < 10 ? `0${minutes}` : minutes;
+	let secondsFormatted =
+		seconds < 10 ? `0${seconds}` : seconds;
+
+	stopwatchNumber.innerText = `${hoursFormatted}:${minutesFormatted}:${secondsFormatted}`;
 };
 
-const calculateResult = () => {
-	calculatorResult.value = eval(calculatorResult.value);
+const stopTimer = () => {
+	clearInterval(timer);
 };
 
-const appendValue = (innerText) => {
-	calculatorResult.value += innerText;
+const resetTimer = () => {
+	clearInterval(timer);
+	hours = 0;
+	minutes = 0;
+	seconds = 0;
+	stopwatchNumber.innerText = "00:00:00";
 };

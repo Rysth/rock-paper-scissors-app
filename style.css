@@ -1,15 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap");
 
 :root {
-	--CL-primary-blue: #6369d115;
-
 	--CL-primary-orange: #ff7e4b;
 	--CL-primary-green: #36c929;
+	--CL-primary-blue: #6369d115;
 	--CL-primary-blue-accented: #4b57ff;
 
 	--CL-neutral-white: #ffffff;
 	--CL-neutral-black: #000000;
-
 	--CL-neutral-transparent-black: #00000062;
 
 	--FF-primary-poppins: "Poppins", sans-serif;
@@ -56,73 +54,45 @@ button {
 	font-family: var(--FF-primary-poppins);
 }
 
-/* Calculator Styles */
-
-.calculator {
-	width: min(95%, 40rem);
-	box-shadow: 0 0 5px var(--CL-neutral-transparent-black);
-	background-color: var(--CL-primary-blue);
-	padding: 2em;
+/* Stopwatch */
+.stopwatch {
+	width: min(95%, 50rem);
 	border-radius: 1em;
+	padding: 2em;
 }
 
-.calculator__header {
-	margin: 0 0 2em 0;
+.stopwatch__header {
+	display: flex;
+	justify-content: center;
+	padding: 2em 0;
 }
 
-.calculator__result {
-	pointer-events: none;
+.stopwatch__number {
+	font-size: calc(5rem + 3vw);
+	font-weight: bold;
+	color: var(--CL-primary-blue-accented);
 }
 
-.calculator__result,
-.calculator__button {
+.stopwatch__content {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1em;
+}
+
+.stopwatch__button {
 	padding: 1em;
-	border-radius: 0.5em;
+	border-radius: 1.25em;
 	border: none;
-	box-shadow: 0 1px 5px var(--CL-neutral-transparent-black);
-	font-size: 1.8rem;
-}
-
-.calculator__content {
-	display: grid;
-	gap: 1em;
-}
-
-.calculator__grid {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	gap: 1em;
-}
-
-.calculator__button {
-	cursor: pointer;
-	background-color: var(--CL-neutral-white);
-}
-
-.calculator__button--equal {
-	grid-column: 4 / 5;
-	grid-row: 1 / 4;
-}
-
-/* General Styles */
-.bg-orange {
-	background-color: var(--CL-primary-orange);
-	color: var(--CL-neutral-white);
-}
-
-.bg-blue {
 	background-color: var(--CL-primary-blue-accented);
-	color: var(--CL-neutral-white);
-}
-
-.bg-green {
-	background-color: var(--CL-primary-green);
 	color: white;
+	box-shadow: 0 0 5px var(--CL-neutral-transparent-black);
+	font-size: calc(1rem + 0.5vw);
+	cursor: pointer;
+	transition: background-color 0.15s ease-out;
 }
 
 @media (min-width: 768px) {
-	.calculator__button:hover {
+	.stopwatch__button:hover {
 		background-color: var(--CL-neutral-black);
-		color: var(--CL-neutral-white);
 	}
 }

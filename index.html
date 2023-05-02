@@ -7,7 +7,7 @@
 			name="viewport"
 			content="width=device-width, initial-scale=1.0"
 		/>
-		<title>Basic Calculator App | RysthDesign</title>
+		<title>Stopwatch App | RysthDesign</title>
 		<link
 			rel="shortcut icon"
 			href="favicon.png"
@@ -16,64 +16,20 @@
 		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
-		<div class="calculator">
-			<header class="calculator__header">
-				<input
-					type="text"
-					id="calculator__result"
-					class="calculator__result"
-					readonly
-				/>
+		<div class="stopwatch">
+			<header class="stopwatch__header">
+				<p class="stopwatch__number">00:00:00</p>
 			</header>
-			<div class="calculator__content">
-				<div class="calculator__grid">
-					<button
-						class="calculator__button bg-orange"
-						id="clear"
-					>
-						C
-					</button>
-					<button
-						class="calculator__button bg-blue"
-						id="division"
-					>
-						/
-					</button>
-					<button
-						class="calculator__button bg-blue"
-						id="multiply"
-					>
-						*
-					</button>
-					<button class="calculator__button bg-blue" id="minus">
-						-
-					</button>
-				</div>
-				<div class="calculator__grid">
-					<button class="calculator__button">7</button>
-					<button class="calculator__button">8</button>
-					<button class="calculator__button">9</button>
-					<button class="calculator__button bg-blue" id="plus">
-						+
-					</button>
-				</div>
-				<div class="calculator__grid">
-					<button class="calculator__button">4</button>
-					<button class="calculator__button">5</button>
-					<button class="calculator__button">6</button>
-					<button
-						class="calculator__button calculator__button--equal bg-green"
-					>
-						=
-					</button>
-					<button class="calculator__button">1</button>
-					<button class="calculator__button">2</button>
-					<button class="calculator__button">3</button>
-					<button class="calculator__button">0</button>
-					<button class="calculator__button" id="decimal">
-						.
-					</button>
-				</div>
+			<div class="stopwatch__content">
+				<button id="start" class="stopwatch__button">
+					Start
+				</button>
+				<button id="stop" class="stopwatch__button">
+					Stop
+				</button>
+				<button id="reset" class="stopwatch__button">
+					Reset
+				</button>
 			</div>
 		</div>
 		<script src="script.js"></script>
