@@ -7,7 +7,7 @@
 			name="viewport"
 			content="width=device-width, initial-scale=1.0"
 		/>
-		<title>Stopwatch App | RysthDesign</title>
+		<title>Rock Paper Scissors| RysthDesign</title>
 		<link
 			rel="shortcut icon"
 			href="favicon.png"
@@ -16,22 +16,35 @@
 		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
-		<div class="stopwatch">
-			<header class="stopwatch__header">
-				<p class="stopwatch__number">00:00:00</p>
+		<div class="game">
+			<header class="game__header">
+				<h1 class="game__title">Rock Paper Scissors Game</h1>
 			</header>
-			<div class="stopwatch__content">
-				<button id="start" class="stopwatch__button">
-					Start
-				</button>
-				<button id="stop" class="stopwatch__button">
-					Stop
-				</button>
-				<button id="reset" class="stopwatch__button">
-					Reset
-				</button>
+			<div class="game__content">
+				<h2 class="game__description">Choose your move:</h2>
+				<div class="game__system">
+					<button id="rock" class="game__element">👊</button>
+					<button id="paper" class="game__element">🖐️</button>
+					<button id="scissors" class="game__element">🖖</button>
+				</div>
+				<p class="game__result">You lose! Rock > Scissors</p>
+				<div class="game__score">
+					<p class="game__score--points">
+						Your score:
+						<span class="color-green fw-bold" id="user__score"
+							>0</span
+						>
+					</p>
+					<p class="game__score--points">
+						Computer score:
+						<span class="color-red fw-bold" id="computer__score"
+							>0</span
+						>
+					</p>
+				</div>
 			</div>
 		</div>
+
 		<script src="script.js"></script>
 	</body>
 </html>

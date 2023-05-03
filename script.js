@@ -1,67 +1,66 @@
-const stopwatchNumber = document.querySelector(
-	".stopwatch__number"
+const gameElements = document.querySelectorAll(
+	".game__element"
+);
+const gameResult = document.querySelector(".game__result");
+
+const userScoreElement =
+	document.querySelector("#user__score");
+const computerScoreElement = document.querySelector(
+	"#computer__score"
 );
 
-const stopwatchButtons = document.querySelectorAll(
-	".stopwatch__button"
-);
+const computerSelection = ["rock", "paper", "scissors"];
+const colorArray = ["#000000", "#1fb811", "#ff4b4b"];
 
-stopwatchButtons.forEach((button) => {
-	button.addEventListener("click", () => {
-		switch (button.id) {
-			case "start":
-				startTimer();
-				break;
-			case "stop":
-				stopTimer();
-				break;
-			case "reset":
-				resetTimer();
-				break;
-		}
+gameElements.forEach((element) => {
+	element.addEventListener("click", () => {
+		startGame(element.id);
 	});
 });
 
-let hours = 00;
-let minutes = 00;
-let seconds = 00;
-let timer = null;
+let userScore = 0;
+let computerScore = 0;
 
-const startTimer = () => {
-	if (timer !== null) {
-		console.log(timer);
-		clearInterval(timer);
+const startGame = (userValue) => {
+	const index = Math.floor(Math.random() * 3);
+	const computerValue = computerSelection[index];
+
+	if (userValue === computerValue) {
+		changeColor(colorArray[0]);
+		changeResult(
+			`It's a draw ${userValue.toUpperCase()} = ${computerValue.toUpperCase()}`
+		);
+	} else if (
+		(userValue === "rock" && computerValue === "scissors") ||
+		(userValue === "paper" && computerValue === "rock") ||
+		(userValue === "scissors" && computerValue === "paper")
+	) {
+		changeColor(colorArray[1]);
+		changeResult(
+			`You win! ${userValue.toUpperCase()} > ${computerValue.toUpperCase()}`
+		);
+		userScore++;
+	} else if (
+		(userValue === "scissors" && computerValue === "rock") ||
+		(userValue === "rock" && computerValue === "paper") ||
+		(userValue === "paper" && computerValue === "scissors")
+	) {
+		changeColor(colorArray[2]);
+		changeResult(
+			`You lose! ${userValue.toUpperCase()} < ${computerValue.toUpperCase()}`
+		);
+		computerScore++;
 	}
-	timer = setInterval(runningTimer, 1000);
-};
-const runningTimer = () => {
-	seconds++;
-	if (seconds == 60) {
-		seconds = 0;
-		minutes++;
-		if (minutes == 60) {
-			minutes = 0;
-			hours++;
-		}
-	}
 
-	let hoursFormatted = hours < 10 ? `0${hours}` : hours;
-	let minutesFormatted =
-		minutes < 10 ? `0${minutes}` : minutes;
-	let secondsFormatted =
-		seconds < 10 ? `0${seconds}` : seconds;
-
-	stopwatchNumber.innerText = `${hoursFormatted}:${minutesFormatted}:${secondsFormatted}`;
+	userScoreElement.innerText = userScore;
+	computerScoreElement.innerText = computerScore;
 };
 
-const stopTimer = () => {
-	clearInterval(timer);
+const changeResult = (string) => {
+	gameResult.innerText = string;
+	gameResult.style.display = "block";
 };
 
-const resetTimer = () => {
-	clearInterval(timer);
-	hours = 0;
-	minutes = 0;
-	seconds = 0;
-	stopwatchNumber.innerText = "00:00:00";
+const changeColor = (colorName) => {
+	gameResult.style.color = colorName;
 };
